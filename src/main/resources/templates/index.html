@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -32,7 +32,7 @@
             <div class="card-back" id="back">
                 <h2 class="header">Register</h2>
                 <form id="registerForm">
-                    <label class="formname" for=" newUsername">New Username:</label>
+                    <label class="formname" for= "newUsername">New Username:</label>
                     <input type="text" id="newUsername" name="newUsername" required>
                     <br>
                     <label class="formname" for="newPassword">New Password:</label>

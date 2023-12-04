@@ -1,13 +1,13 @@
-package br.edu.unifacisa.loja;
+package com.example.projeto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LojaApplication {
+public class ProjetoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LojaApplication.class, args);
+        SpringApplication.run(ProjetoApplication.class, args);
     }
 
 }

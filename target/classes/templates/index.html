@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login e Registro</title>
+    <title>Login/Register</title>
     <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
 
         <div class="card">
             <div class="card-front" id="front">
-                <h2>Login</h2>
+                <h2 class="header">Login</h2>
                 <form id="loginForm">
-                    <label for="username">Username:</label>
+                    <label class="formname" for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                     <br>
-                    <label for="password">Password:</label>
+                    <label class="formname" for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                     <br>
                     <button type="button" id="loginBtn">Login</button>
@@ -25,19 +30,20 @@
                 </form>
             </div>
             <div class="card-back" id="back">
-                <h2>Register</h2>
-                <form method="post" th:action="@{/userlogin}" id="registerForm" th:object="${socialUser}">
-                    <label for="newUsername">New Username:</label>
-                    <input th:field="*{username}" type="text" id="newUsername" name="newUsername" required>
+                <h2 class="header">Register</h2>
+                <form id="registerForm">
+                    <label class="formname" for= "newUsername">New Username:</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
                     <br>
-                    <label for="newPassword">New Password:</label>
-                    <input th:field="*{password}" type="password" id="newPassword" name="newPassword" required>
+                    <label class="formname" for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
                     <br>
-                    <button type="submit" id="registerBtn">Register</button>
+                    <button type="button" id="registerBtn">Register</button>
                     <p class="dont-have-account">Already have an account? <a href="#" id="showLoginBtn">Sign in</a></p>
                 </form>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>

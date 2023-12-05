@@ -5,16 +5,18 @@ document.addEventListener("DOMContentLoaded", function() {
     var showRegisterBtn = document.getElementById("showRegisterBtn");
     var showLoginBtn = document.getElementById("showLoginBtn");
 
-    loginBtn.addEventListener("click", function() {
-        Swal.fire({
-            title: "Login Successful",
-            // text: "Entering...",
-            icon: "success"
-          });
-    });
+
+
+    // loginBtn.addEventListener("click", function() {
+    //     Swal.fire({
+    //         title: "Login Successful",
+    //         // text: "Entering...",
+    //         icon: "success"
+    //       });
+    // });
 
     registerBtn.addEventListener("click", function() {
-        alert("You clicked the button!"); //other option
+        alert("Account created successfully"); //other option
     });
 
     showRegisterBtn.addEventListener("click", function() {

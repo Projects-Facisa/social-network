@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>parabens</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Network</title>
+<link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
-parabens vc logou na conta
+    <div id="container">
+        <div id="header">
+            <ul id="nav">
+                <li>Home</li>
+                <li>Public Timeline</li>
+                <li>Sign out</li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="post-area">
+                <h2>What are you doing?</h2>
+                <textarea id="post-text"></textarea>
+                <button id="post-button">Post</button>
+            </div>
+
+            <div id="timeline">
+                <div class="post">Além de retratar a realidade da saúde pública do país durante a pandemia, edição especial, que estreia em outubro, traz cenas de flashback que mostram […]</div>
+                <div class="post">A Band estreia neste sábado, 19, às 20h25, Bruce Lee: A Lenda. A série acompanha a vida do lendário ator, filósofo, cineasta e mestre das […]</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

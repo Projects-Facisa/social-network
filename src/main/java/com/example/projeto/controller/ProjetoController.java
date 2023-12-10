@@ -6,6 +6,7 @@ import com.example.projeto.repository.PostsRepository;
 import com.example.projeto.repository.UserRepository;
 import com.example.projeto.service.CookieService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,10 +74,22 @@ public class ProjetoController {
         return "redirect:home";
     }
 
-    @GetMapping("/home")
-    public String Posts(Model model){
-        model.addAttribute("post", new Posts());
-        model.addAttribute("posts", postsRepository.findAll());
-        return "home";
-    }
+@GetMapping("/home")
+public String home(Model model, HttpServletResponse response) {
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    model.addAttribute("post", new Posts());
+    model.addAttribute("posts", postsRepository.findAll());
+    return "home";
+}
+
+    
+@GetMapping("/exit")
+public String logout(HttpServletResponse response) {
+CookieService.setCookie(response, "userId", "", 0);
+return "redirect:/login";
+}
 }

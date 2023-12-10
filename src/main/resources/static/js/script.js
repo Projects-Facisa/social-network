@@ -1,3 +1,20 @@
+function logout() {
+    fetch('/sair', { method: 'GET' })
+    .then(response => {
+
+        if (response.ok) {
+            window.location.href = response.url;
+        } else {
+            throw new Error('Falha ao sair');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     var card = document.querySelector(".card");
     var loginBtn = document.getElementById("loginBtn");
@@ -31,5 +48,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("front").classList.remove("disable-mouse-events")
         document.getElementById("back").classList.add("disable-mouse-events")
-    });
+    });     
 });

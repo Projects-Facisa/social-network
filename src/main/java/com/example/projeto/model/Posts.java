@@ -2,7 +2,7 @@ package com.example.projeto.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Posts {
@@ -11,7 +11,11 @@ public class Posts {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String content;
-    private Date postDate;
+    private LocalDateTime date;
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 
 //    @ManyToOne
 //    private SocialUser user;
@@ -23,15 +27,10 @@ public class Posts {
 //    public void setUser(SocialUser user) {
 //        this.user = user;
 //    }
-
-    public Date getPostDate() {
-        return postDate;
+    @PrePersist
+    protected void onCreate() {
+        date = LocalDateTime.now();
     }
-
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
-    }
-
     public Integer getId() {
         return id;
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +10,22 @@
     <div id="container">
         <div id="header">
             <ul id="nav">
-                <li>Home</li>
-                <li>Public Timeline</li>
-                <li>Sign out</li>
+                <button type="signout" id="signout-button" class="button" >Sign-out</button>
             </ul>
         </div>
-        <div id="content">
+        <div class="content">
             <div id="post-area">
-                <form action="/post" method="get">
-                    <h2>What are you doing?</h2>
-                    <textarea id="post-text" name="postText"></textarea>
-                    <button type="submit" id="post-button">Post</button>
+                <form th:action="@{/home}" th:object="${post}" method="post">
+                    <h2 id="wayd" >What are you doing ?</h2>
+                    <input type="text" id="post-text" name="content" th:field="*{content}" required/>
+                    <button type="submit" id="post-button" class="button" >Post</button>
                 </form>
             </div>
-
-            <div id="timeline">
-                <div class="post">Além de retratar a realidade da saúde pública do país durante a pandemia, edição especial, que estreia em outubro, traz cenas de flashback que mostram […]</div>
-                <div class="post">A Band estreia neste sábado, 19, às 20h25, Bruce Lee: A Lenda. A série acompanha a vida do lendário ator, filósofo, cineasta e mestre das […]</div>
-            </div>
+            <ul>
+                <li class="post" th:each="p : ${posts}">
+                    <span th:text="${p.content}"></span>
+                </li>
+            </ul>
         </div>
     </div>
 </body>

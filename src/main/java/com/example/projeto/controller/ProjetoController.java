@@ -43,7 +43,7 @@ public class ProjetoController {
     public String UsersLogin(@ModelAttribute SocialUser userLogin, Model model, HttpServletResponse response){
         SocialUser user = this.userRepository.Login(userLogin.getUsername(), userLogin.getPassword());
         if (user != null){
-            CookieService.setCookie(response, "userId", String.valueOf(user.getId()),20);
+            CookieService.setCookie(response, "userId", String.valueOf(user.getId()),9999999);
             model.addAttribute("error", null);
             return "redirect:/home";
         }
@@ -66,26 +66,17 @@ public class ProjetoController {
         }
         return "index";
     }
-    @GetMapping("/post")
-    public String showPostForm(Model model) {
-        model.addAttribute("post", new Posts());
-        return "post";
-    }
-    @PostMapping("/post")
+    @PostMapping("/home")
     public String createPost(@ModelAttribute Posts post, Model model) {
 
         postsRepository.save(post);
-        return "redirect:/home";
-    }
-    @GetMapping("/userlist")
-    public String ListUsers(Model model){
-        model.addAttribute("socialUser", userRepository.findAll());
-        return "userlist";
+        return "redirect:home";
     }
 
     @GetMapping("/home")
-    public String SocialNetworkHome(Model model){
+    public String Posts(Model model){
+        model.addAttribute("post", new Posts());
+        model.addAttribute("posts", postsRepository.findAll());
         return "home";
     }
-
 }

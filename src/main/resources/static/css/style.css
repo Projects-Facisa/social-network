@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,700");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3955b514-aadc-4d7d-8248-71fc5b9c30ce/dg39dc3-55810788-e69f-48db-bf61-a92401dd34d2.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM5NTViNTE0LWFhZGMtNGQ3ZC04MjQ4LTcxZmM1YjljMzBjZVwvZGczOWRjMy01NTgxMDc4OC1lNjlmLTQ4ZGItYmY2MS1hOTI0MDFkZDM0ZDIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sEqfj98mUXPDJNx009a8nG6r4k45Kumg8c9H0cYO2wc);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 600px;
+}
+
+.card {
+    height: 400px;
+    width: 300px;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.card.flip {
+    transform: rotateX(-180deg);
+}
+
+.card-front,
+.card-back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.card-back {
+    transform: rotateX(180deg);
+    color: #ffffff;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header{
+    margin-bottom: 35px;
+}
+.formname {
+    color: white;
+
+}
+form input{
+    color:#ffffff!important;
+    background-color: rgba(178,164,212, 0.65);
+    border-radius: 20px; 
+    padding: 5px; 
+    margin: 5px;
+}
+
+form button {
+    cursor: pointer;
+    background-color: rgb(178,164,212);
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease; 
+    color:#ffffff!important;
+}
+
+form button:hover {
+    background-color: rgb(178,164,2121); 
+}
+
+
+.form-header {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.card-front #showRegisterBtn,
+.card-back #showLoginBtn {
+    color: rgb(178,164,212); 
+    margin-top: auto;
+}
+
+.card-front #showRegisterBtn:hover,
+.card-back #showLoginBtn:hover {
+    text-decoration: none;
+}
+
+.disable-mouse-events {
+    pointer-events: none;
+}

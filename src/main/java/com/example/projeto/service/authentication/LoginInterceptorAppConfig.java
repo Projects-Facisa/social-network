@@ -23,7 +23,7 @@ public class LoginInterceptorAppConfig implements WebMvcConfigurer {
                         "/css/**",
                         "/js/**",
                         "/userlogin",
-                        "/userlogin/resgisteruser"
+                        "/userlogin/registeruser"
                 );
     }
 }

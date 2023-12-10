@@ -33,12 +33,14 @@
             </div>
             <div class="card-back" id="back">
                 <h2 class="header">Register</h2>
-                <form id="registerForm" method="post" th:action="@{/registeruser}" th:object="${socialUser}">
+                <form id="registerForm" method="post" th:action="@{/userlogin/registeruser}" th:object="${socialUser}">
                     <label class="formname" for= "newUsername">New Username:</label>
                     <input type="text" id="newUsername" th:field="*{username}" name="newUsername" required>
                     <br>
                     <label class="formname" for="newPassword">New Password:</label>
                     <input type="password" id="newPassword" th:field="*{password}" name="newPassword" required>
+                    <br>
+                    <div th:if="${inUse != null}" th:text="${inUse}"></div>
                     <br>
                     <button type="submit" id="registerBtn">Register</button>
                     <p class="dont-have-account">Already have an account? <a href="#" id="showLoginBtn">Sign in</a></p>

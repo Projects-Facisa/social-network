@@ -1,46 +1,85 @@
 package com.example.projeto.controller;
 
+import com.example.projeto.model.Posts;
 import com.example.projeto.model.SocialUser;
+import com.example.projeto.repository.PostsRepository;
 import com.example.projeto.repository.UserRepository;
+import com.example.projeto.service.CookieService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 @Controller
 public class ProjetoController {
-    private UserRepository repository;
+    private UserRepository userRepository;
+    private PostsRepository postsRepository;
 
-    public ProjetoController(UserRepository repository) {
-        this.repository = repository;
+    public ProjetoController() {
     }
 
+    @Autowired
+    public ProjetoController(UserRepository userRepository, PostsRepository postsRepository) {
+        this.userRepository = userRepository;
+        this.postsRepository = postsRepository;
+    }
+
+    @GetMapping
+    public String index(){
+        return "redirect:/userlogin";
+    }
     @GetMapping("/userlogin")
     public String showLoginForm(Model model) {
         model.addAttribute("socialUser", new SocialUser());
         return "index";
     }
     @PostMapping("/userlogin")
-    public String UsersLogin(@ModelAttribute SocialUser userLogin, Model model){
-        SocialUser user = this.repository.Login(userLogin.getUsername(), userLogin.getPassword());
+    public String UsersLogin(@ModelAttribute SocialUser userLogin, Model model, HttpServletResponse response){
+        SocialUser user = this.userRepository.Login(userLogin.getUsername(), userLogin.getPassword());
         if (user != null){
+            CookieService.setCookie(response, "userId", String.valueOf(user.getId()),20);
             model.addAttribute("error", null);
             return "redirect:/home";
         }
         model.addAttribute("error", "wrong password or username");
         return "index";
     }
-    @RequestMapping("/registeruser")
-    public String RegisterUsers(@ModelAttribute SocialUser socialUser, Model model){
-        repository.save(socialUser);
+    @GetMapping("/userlogin/registeruser")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("socialUser", new SocialUser());
         return "index";
     }
 
+    @PostMapping("/userlogin/registeruser")
+    public String RegisterUsers(@ModelAttribute SocialUser socialUser, Model model){
+        SocialUser newUser = this.userRepository.RegisterCheck(socialUser.getUsername());
+        if (newUser == null) {
+            userRepository.save(socialUser);
+        } else{
+            model.addAttribute("inUse", "Username already in use");
+        }
+        return "index";
+    }
+    @GetMapping("/post")
+    public String showPostForm(Model model) {
+        model.addAttribute("post", new Posts());
+        return "post";
+    }
+    @PostMapping("/post")
+    public String createPost(@ModelAttribute Posts post, Model model) {
+
+        postsRepository.save(post);
+        return "redirect:/home";
+    }
     @GetMapping("/userlist")
     public String ListUsers(Model model){
-        model.addAttribute("socialUser", repository.findAll());
+        model.addAttribute("socialUser", userRepository.findAll());
         return "userlist";
     }
 
@@ -48,8 +87,5 @@ public class ProjetoController {
     public String SocialNetworkHome(Model model){
         return "home";
     }
-
-
-
 
 }

@@ -15,8 +15,8 @@
         </div>
         <div class="content">
             <div id="post-area">
-                <form th:action="@{/home}" th:object="${post}" method="post">
-                    <h2 id="wayd" >What are you doing ?</h2>
+                <form id ="post-form" th:action="@{/home}" th:object="${post}" method="post">
+                    <h2 id="wayd" >What's happening ?</h2>
                     <input type="text" id="post-text" name="content" th:field="*{content}" required/>
                     <button type="submit" id="post-button" class="button" >Post</button>
                 </form>

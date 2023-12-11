@@ -3,27 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Network</title>
+<title>Home-page</title>
 <link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
-    <div id="container">
+    <div class="container">
         <div id="header">
-            <ul id="nav">
-                <button type="button" id="signout-button" class="button" onclick="logout()">Sign-out</button>
+            <ul class="nav">
+                <button type="button" class="buttons" >Post</button>
+                <button type="button" class="buttons" >Search</button>
+                <button type="button" class="buttons" onclick="logout()">Logout</button>
             </ul>
         </div>
         <div class="content">
-            <div id="post-area">
-                <form id ="post-form" th:action="@{/home}" th:object="${post}" method="post">
-                    <h2 id="wayd" >What's happening ?</h2>
-                    <input type="text" id="post-text" name="content" th:field="*{content}" required/>
-                    <button type="submit" id="post-button" class="button" >Post</button>
-                </form>
-            </div>
+            <h2 class="headertext" >Timeline</h2>
             <ul>
                 <li class="post" th:each="p : ${posts}">
-                    <span th:text="${p.content}"></span>
+                    <span th:text="${p.content}"></span> Post-date : <span th:text="${p.getDate()}"></span>
                 </li>
             </ul>
         </div>

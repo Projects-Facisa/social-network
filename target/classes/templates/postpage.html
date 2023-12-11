@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+</head>
+<body>
+<div class= "container" id="containerPost">
+    <div class="header">
+        <ul class="nav">
+            <button type="button" class="buttons" >Home</button>
+        </ul>
+    </div>
+    <div class="content" id="sexo">
+        <div class="post-area">
+            <form class ="post-form" th:action="@{/home}" th:object="${post}" method="post">
+                <h2 class="headertext" >What's happening ?</h2>
+                <input type="text" id="post-text" name="content" th:field="*{content}" required/>
+                <button type="submit" id="post-button" class="buttons" >Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

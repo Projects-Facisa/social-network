@@ -1,11 +1,11 @@
 function logout() {
-    fetch('/sair', { method: 'GET' })
+    fetch('/exit', { method: 'GET' })
     .then(response => {
 
         if (response.ok) {
             window.location.href = response.url;
         } else {
-            throw new Error('Falha ao sair');
+            throw new Error('Error');
         }
     })
     .catch(error => {

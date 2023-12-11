@@ -13,10 +13,6 @@ public class Posts {
     private String content;
     private LocalDateTime date;
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
 //    @ManyToOne
 //    private SocialUser user;
 //
@@ -47,5 +43,11 @@ public class Posts {
         this.content = content;
     }
 
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+    public LocalDateTime getDate() {
+        return date;
+    }
 //
 }

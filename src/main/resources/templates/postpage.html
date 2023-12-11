@@ -11,9 +11,10 @@
     <div class="header">
         <ul class="nav">
             <button type="button" class="buttons" >Home</button>
+            <button type="button" class="buttons" onclick="logout()">Logout</button>
         </ul>
     </div>
-    <div class="content" id="sexo">
+    <div class="content" id="contentPost">
         <div class="post-area">
             <form class ="post-form" th:action="@{/home}" th:object="${post}" method="post">
                 <h2 class="headertext" >What's happening ?</h2>

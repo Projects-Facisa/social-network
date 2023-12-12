@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+<body>
+<h2>Search Result</h2>
+<div th:if="${not #lists.isEmpty(posts)}">
+    <ul>
+        <li th:each="p : ${posts}">
+            <span th:text="${p.user.username}"></span>&nbsp;Posted:&nbsp;
+            <span th:text="${p.content}"></span>&nbsp;&nbsp;Post-date:&nbsp;
+            <span th:text="${p.getFormattedDate()}"></span>
+        </li>
+    </ul>
+</div>
+<div  th:if="${#lists.isEmpty(posts)}">
+    <p th:if="${username} != null" th:text="'No posts found for the user: ' + ${username}"></p>
+    <p th:if="${username} == null" th:text="'Invalid user.'"></p>
+</div>
+</body>
+</html>

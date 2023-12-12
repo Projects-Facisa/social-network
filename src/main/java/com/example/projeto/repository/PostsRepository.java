@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface PostsRepository extends JpaRepository<Posts, Integer> {
     List<Posts> findAllByOrderByDateDesc();
+    List<Posts> findAllByUserUsernameOrderByDateDesc(String username);
 }
+

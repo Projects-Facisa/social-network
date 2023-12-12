@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -101,9 +102,20 @@ public class ProjectController {
         return "post";
     }
     @GetMapping("/search")
-    public String search(){
-        return "search";
+    public String search(@RequestParam(name = "username", required = false) String username, Model model) {
+        if (username != null) {
+            List<Posts> userPosts = postsRepository.findAllByUserUsernameOrderByDateDesc(username);
+            model.addAttribute("posts", userPosts);
+            SocialUser user = userRepository.RegisterCheck(username);
+            if (user != null) {
+                model.addAttribute("username", username);
+            }
+            return "result";
+        } else {
+            return "search";
+        }
     }
+
     @GetMapping("/exit")
     public String logout(HttpServletResponse response) {
     CookieService.setCookie(response, "userId", "", 0);

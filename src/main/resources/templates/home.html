@@ -10,8 +10,8 @@
     <div class="container">
         <div id="header">
             <ul class="nav">
-                <button type="button" class="buttons" >Post</button>
-                <button type="button" class="buttons" >Search</button>
+                <button type="button" class="buttons" onclick="post()">Post</button>
+                <button type="button" class="buttons" onclick="search()" >Search</button>
                 <button type="button" class="buttons" onclick="logout()">Logout</button>
             </ul>
         </div>
@@ -19,7 +19,7 @@
             <h2 class="headertext" >Timeline</h2>
             <ul>
                 <li class="post" th:each="p : ${posts}">
-                    <span th:text="${p.content}"></span> Post-date : <span th:text="${p.getDate()}"></span>
+                    User&nbsp;<span th:text="${p.user.username}"></span>&nbsp;Posted:&nbsp; <span th:text="${p.content}"></span>&nbsp;&nbsp;Post-date:&nbsp;<span th:text="${p.getFormattedDate()}"></span>
                 </li>
             </ul>
         </div>

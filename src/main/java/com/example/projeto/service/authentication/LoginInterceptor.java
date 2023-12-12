@@ -21,9 +21,9 @@ public class LoginInterceptor implements HandlerInterceptor{
             }
         }
         catch(Exception error) {
-            response.sendRedirect("/userlogin");
+            response.sendRedirect("/login");
         }
-        response.sendRedirect("/userlogin");
+        response.sendRedirect("/login");
         return false;
     }
 

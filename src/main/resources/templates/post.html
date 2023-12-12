@@ -10,13 +10,13 @@
 <div class= "container" id="containerPost">
     <div class="header">
         <ul class="nav">
-            <button type="button" class="buttons" >Home</button>
+            <button type="button" class="buttons" onclick="home()" >Home</button>
             <button type="button" class="buttons" onclick="logout()">Logout</button>
         </ul>
     </div>
     <div class="content" id="contentPost">
         <div class="post-area">
-            <form class ="post-form" th:action="@{/home}" th:object="${post}" method="post">
+            <form class ="post-form" th:action="@{/post}" th:object="${post}" method="post">
                 <h2 class="headertext" >What's happening ?</h2>
                 <input type="text" id="post-text" name="content" th:field="*{content}" required/>
                 <button type="submit" id="post-button" class="buttons" >Post</button>

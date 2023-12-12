@@ -12,7 +12,15 @@ function logout() {
         console.error('Error:', error);
     });
 }
-
+function post(){
+    window.location.replace("http://www.localhost:8080/post")
+}
+function search() {
+    window.location.replace("http://www.localhost:8080/search")
+}
+function home() {
+    window.location.replace("http://www.localhost:8080/home")
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -23,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var showLoginBtn = document.getElementById("showLoginBtn");
 
 
-
     // loginBtn.addEventListener("click", function() {
     //     Swal.fire({
     //         title: "Login Successful",
@@ -31,10 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
     //         icon: "success"
     //       });
     // });
-
-    registerBtn.addEventListener("click", function() {
-        alert("Account created successfully"); //other option
-    });
+    //
+    // registerBtn.addEventListener("click", function() {
+    //     alert("Account created successfully"); //other option
+    // });
 
     showRegisterBtn.addEventListener("click", function() {
         card.classList.add("flip");

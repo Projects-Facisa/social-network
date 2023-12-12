@@ -13,16 +13,16 @@ public class SocialUser {
     private String username;
     private String password;
 
-//    @OneToMany
-//    private List<Posts> posts = new ArrayList<>();
-//
-//    public List<Posts> getPosts() {
-//        return posts;
-//    }
-//
-//    public void setPosts(ArrayList<Posts> posts) {
-//        this.posts = posts;
-//    }
+    @OneToMany(mappedBy = "user")
+    private List<Posts> posts = new ArrayList<>();
+
+    public List<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(ArrayList<Posts> posts) {
+        this.posts = posts;
+    }
     public void post(Posts content){
 
     }

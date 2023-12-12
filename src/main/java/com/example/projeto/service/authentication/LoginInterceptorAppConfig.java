@@ -22,8 +22,8 @@ public class LoginInterceptorAppConfig implements WebMvcConfigurer {
                 .excludePathPatterns(
                         "/css/**",
                         "/js/**",
-                        "/userlogin",
-                        "/userlogin/registeruser"
+                        "/login",
+                        "/login/register"
                 );
     }
 }

@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-front" id="front">
                 <h2 class="header">Login</h2>
-                <form id="loginForm" method="post" th:action="@{/userlogin}" th:object="${socialUser}">
+                <form id="loginForm" method="post" th:action="@{/login}" th:object="${socialUser}">
                     <label class="formname" for="username">Username:</label>
                     <input type="text" id="username" th:field="*{username}" name="username" required>
                     <br>
@@ -33,7 +33,7 @@
             </div>
             <div class="card-back" id="back">
                 <h2 class="header">Register</h2>
-                <form id="registerForm" method="post" th:action="@{/userlogin/registeruser}" th:object="${socialUser}">
+                <form id="registerForm" method="post" th:action="@{/login/register}" th:object="${socialUser}">
                     <label class="formname" for= "newUsername">New Username:</label>
                     <input type="text" id="newUsername" th:field="*{username}" name="newUsername" required>
                     <br>

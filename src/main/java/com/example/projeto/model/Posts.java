@@ -3,6 +3,7 @@ package com.example.projeto.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Posts {
@@ -13,16 +14,16 @@ public class Posts {
     private String content;
     private LocalDateTime date;
 
-//    @ManyToOne
-//    private SocialUser user;
-//
-//    public SocialUser getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(SocialUser user) {
-//        this.user = user;
-//    }
+    @ManyToOne
+    private SocialUser user;
+
+    public SocialUser getUser() {
+        return user;
+    }
+
+    public void setUser(SocialUser user) {
+        this.user = user;
+    }
     @PrePersist
     protected void onCreate() {
         date = LocalDateTime.now();
@@ -49,5 +50,8 @@ public class Posts {
     public LocalDateTime getDate() {
         return date;
     }
-//
+    public String getFormattedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return date.format(formatter);
+    }
 }

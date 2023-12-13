@@ -16,14 +16,16 @@
             </ul>
         </div>
         <div class="content">
-            <h2 class="headertext" >Timeline</h2>
-            <ul>
-                <li class="post" th:each="p : ${posts}">
-                    User&nbsp;<span th:text="${p.user.username}"></span>&nbsp;
-                    Posted:&nbsp; <span th:text="${p.content}"></span>&nbsp;&nbsp;
-                    Post-date:&nbsp;<span th:text="${p.getFormattedDate()}"></span>
-                </li>
-            </ul>
+            <div class="content-box">
+                <h2 class="headertext" >Timeline</h2>
+                <ul>
+                    <li class="post" th:each="p : ${posts}">
+                        User&nbsp;<span th:text="${p.user.username}"></span>&nbsp;
+                        Posted:&nbsp; <span th:text="${p.content}"></span>&nbsp;&nbsp;
+                        Post-date:&nbsp;<span th:text="${p.getFormattedDate()}"></span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <script th:src="@{/js/script.js}"></script>

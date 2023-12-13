@@ -2,14 +2,30 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Search placeholder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
-<form th:action="@{/search}" method="get">
-    <label for="username">Search by Username:</label>
-    <input type="text" id="username" name="username" required/>
-    <button type="submit">Search</button>
-</form>
+<div class= "container" id="containerPost">
+    <div>
+        <ul class="nav">
+            <button type="button" class="buttons" onclick="home()" >Home</button>
+            <button type="button" class="buttons" onclick="logout()">Logout</button>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-box" id="contentPost">
+            <div class="post-area">
+                <form class ="post-form" th:action="@{/search}" th:object="${search}" method="get">
+                    <h2 class="headertext" >Find posts by username</h2>
+                    <input type="text" class="input-text" id="search-text" name="username" required/>
+                    <button type="submit" id="search-button" class="buttons" >Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script th:src="@{/js/script.js}"></script>
 </body>
 </html>

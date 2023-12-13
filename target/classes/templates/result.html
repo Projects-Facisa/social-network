@@ -2,22 +2,46 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Search Result</title>
+    <title>Search Results</title>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
-<h2>Search Result</h2>
-<div th:if="${not #lists.isEmpty(posts)}">
-    <ul>
-        <li th:each="p : ${posts}">
-            <span th:text="${p.user.username}"></span>&nbsp;Posted:&nbsp;
-            <span th:text="${p.content}"></span>&nbsp;&nbsp;Post-date:&nbsp;
-            <span th:text="${p.getFormattedDate()}"></span>
-        </li>
-    </ul>
+<div class="container" th:if="${not #lists.isEmpty(posts)}">
+    <div>
+        <ul class="nav">
+            <button type="button" class="buttons" onclick="home()">Home</button>
+            <button type="button" class="buttons" onclick="search()" >Search</button>
+            <button type="button" class="buttons" onclick="logout()">Logout</button>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-box">
+            <h2 class="headertext" >Search results</h2>
+            <ul>
+                <li class="post" th:each="p : ${posts}">
+                    <span th:text="${p.user.username}"></span>&nbsp;Posted:&nbsp;
+                    <span th:text="${p.content}"></span>&nbsp;&nbsp;Post-date:&nbsp;
+                    <span th:text="${p.getFormattedDate()}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-<div  th:if="${#lists.isEmpty(posts)}">
-    <p th:if="${username} != null" th:text="'No posts found for the user: ' + ${username}"></p>
-    <p th:if="${username} == null" th:text="'Invalid user.'"></p>
+<div th:if="${#lists.isEmpty(posts)}">
+    <div>
+        <ul class="nav">
+            <button type="button" class="buttons" onclick="home()">Home</button>
+            <button type="button" class="buttons" onclick="search()" >Search</button>
+            <button type="button" class="buttons" onclick="logout()">Logout</button>
+        </ul>
+    </div>
+    <div class="content">
+    <div class="content-box" id="content-invalid-user-search">
+        <p th:if="${username} != null" th:text="'No posts found for the user: ' + ${username}"></p>
+        <p th:if="${username} == null" th:text="'Invalid user, please try again.'"></p>
+        </div>
+    </div>
 </div>
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

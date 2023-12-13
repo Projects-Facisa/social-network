@@ -16,13 +16,11 @@
     </div>
     <div class="content">
         <div class="content-box" id="contentPost">
-            <div class="post-area">
-                <form class ="post-form" th:action="@{/search}" th:object="${search}" method="get">
-                    <h2 class="headertext" >Find posts by username</h2>
-                    <input type="text" class="input-text" id="search-text" name="username" required/>
-                    <button type="submit" id="search-button" class="buttons" >Search</button>
-                </form>
-            </div>
+            <form class ="post-form" th:action="@{/search}" th:object="${search}" method="get">
+                <h2 class="headertext" >Find posts by username</h2>
+                <input type="text" class="input-text" id="search-text" name="username" required/>
+                <button type="submit" id="search-button" class="buttons" >Search</button>
+            </form>
         </div>
     </div>
 </div>

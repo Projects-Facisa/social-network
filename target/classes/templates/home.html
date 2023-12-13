@@ -8,21 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <div id="header">
             <ul class="nav">
                 <button type="button" class="buttons" onclick="post()">Post</button>
                 <button type="button" class="buttons" onclick="search()" >Search</button>
                 <button type="button" class="buttons" onclick="logout()">Logout</button>
             </ul>
-        </div>
         <div class="content">
             <div class="content-box">
                 <h2 class="headertext" >Timeline</h2>
-                <ul>
+                <ul class="item">
                     <li class="post" th:each="p : ${posts}">
-                        User&nbsp;<span th:text="${p.user.username}"></span>&nbsp;
-                        Posted:&nbsp; <span th:text="${p.content}"></span>&nbsp;&nbsp;
-                        Post-date:&nbsp;<span th:text="${p.getFormattedDate()}"></span>
+                        <div class="post-header">
+                            <span th:text="${p.user.username}"></span>
+                            <span th:text="${p.getFormattedDate()}"></span>
+                        </div>
+                            <span th:text="${p.content}"></span>
                     </li>
                 </ul>
             </div>

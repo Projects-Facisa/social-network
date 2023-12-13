@@ -27,6 +27,7 @@ body {
 }
 
 .headertext {
+    font-weight: bold;
     text-align: center;
     padding: 20px;
     padding-top: 0px;
@@ -61,11 +62,28 @@ body {
 .post {
     word-break: break-all;
     display: flex;
+    flex-direction: column;
     background-color: var(--secondary-color);
     color: var(--quarantine-color);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+.post-header{
+    text-transform: capitalize;
+    color: var(--tertiary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+}
+
+.item {
+    max-height: 70vh;
+    overflow: auto;
+    padding: 0 10px;
 }
 
 ul {
@@ -113,8 +131,4 @@ ul {
 .content{
     width: 100%;
     height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
